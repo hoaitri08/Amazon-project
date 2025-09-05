@@ -4,8 +4,10 @@ import { formatCurrency } from "./utils/money.js";
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {deliveryOptions} from '../data/deliveryOptions.js';
 
-let cartHTML = '';
 
+function renderOrderSummary() {
+
+let cartHTML = '';
 
 cart.forEach((cartItem) => {
 
@@ -134,6 +136,9 @@ document.querySelectorAll('.js-delivery-option')
     element.addEventListener('click', () => {
       const {productId, deliveryOptionId} = element.dataset; 
       updateDeliveryOption(productId, deliveryOptionId);
+      renderOrderSummary();
     });
+  });
+}
 
-  })
+renderOrderSummary();
